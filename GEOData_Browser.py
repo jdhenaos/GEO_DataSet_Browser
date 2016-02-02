@@ -3,8 +3,9 @@ import re
 #path = raw_input("Enter the path of the gds file\n")
 new_file = ""
 
-def finder(x):
-    print x
+def first_filter(x):
+    if x.find("Parkinson") != -1:
+        print x
 
 try:
     infile = open("gds_result.txt")
@@ -19,4 +20,4 @@ data = re.split("\n(\d+)\. ",new_file)
 
 for n in data:
     if re.match("\D",n):
-        finder(n)
+        first_filter(n)
