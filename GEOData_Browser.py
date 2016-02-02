@@ -13,9 +13,10 @@ except:
     print "The file Do not exist"
 
 range_init = 0
-range_final = 8
+range_final = 6
 
 while range_final <= len(new_file):
-    print new_file[range_init:range_final]
-    range_init += 8
-    range_final +=8
+    for n in new_file[range_init:range_final]:
+        print n
+    range_init += 6
+    range_final += 6
