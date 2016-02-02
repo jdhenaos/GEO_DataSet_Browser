@@ -3,9 +3,13 @@ import re
 #path = raw_input("Enter the path of the gds file\n")
 new_file = ""
 
+def second_filter(y):
+    init_pos = y.find("Organism:")
+    final_pos = y[init_pos+9:].find(":")
+
 def first_filter(x):
     if x.find("Parkinson") != -1:
-        print x
+        second_filter(x)
 
 try:
     infile = open("gds_result.txt")
