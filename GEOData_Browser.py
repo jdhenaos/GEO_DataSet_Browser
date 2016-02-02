@@ -13,6 +13,3 @@ except:
     print "The file do not exist"
 
 data = re.split("\n(\d+)\. ",new_file)
-
-for n in data:
-    print n
