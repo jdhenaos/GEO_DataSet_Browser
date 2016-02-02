@@ -12,6 +12,7 @@ try:
 except:
     print "The file do not exist"
 
-T = re.split("\W(\d+)\. ",new_file,re.VERBOSE)
+data = re.split("\n(\d+)\. ",new_file)
 
-print T[4]
+for n in data:
+    print n
