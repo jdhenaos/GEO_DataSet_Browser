@@ -4,7 +4,7 @@ import re
 new_file = ""
 
 try:
-    infile = open("/home/juan/Descargas/gds_result.txt")
+    infile = open("gds_result.txt")
 
     for i in infile.readlines():
         new_file += i
@@ -12,4 +12,6 @@ try:
 except:
     print "The file do not exist"
 
-print new_file[1]
+T = re.split("\W(\d+)\. ",new_file,re.VERBOSE)
+
+print T[4]
