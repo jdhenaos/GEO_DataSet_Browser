@@ -5,7 +5,7 @@ new_file = ""
 dic_chip = {}
 
 def chip_counter(z):
-    print z
+    outfile2.writelines(z+"\n")
     t = re.search("(GPL)\d*",z)
     if dic_chip.has_key(t.group(0)):
         dic_chip[t.group(0)] += 1
@@ -36,6 +36,11 @@ try:
 except:
     print "File is not created"
 
+try:
+    outfile2 = open("Parkinson_Studies.txt","w")
+except:
+    print "File is not created"
+
 data = re.split("\n(\d+)\. ",new_file)
 
 for n in data:
@@ -50,3 +55,4 @@ for w in dic_chip.items():
 
 infile.close()
 outfile.close()
+outfile2.close()
