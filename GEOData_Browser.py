@@ -43,8 +43,10 @@ for n in data:
         first_filter(n)
 
 for w in dic_chip.items():
-    print  w[0],": ",w[1]
-    outfile.write(w[0],": ",w[1])
+    o1 = str(w[0])
+    o2 = str(w[1])
+    out = o1+": "+o2+"\n"
+    outfile.write(out)
 
 infile.close()
 outfile.close()
