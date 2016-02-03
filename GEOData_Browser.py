@@ -2,9 +2,16 @@ import re
 
 #path = raw_input("Enter the path of the gds file\n")
 new_file = ""
+dic_chip = {}
 
 def chip_counter(z):
-    print z
+    counter = 1
+    t = re.search("(GPL)\d*",z)
+    if dic_chip.has_key(t.group(0)):
+        counter += 1
+        dic_chip[t.group(0)] = counter
+    else:
+        dic_chip[t.group(0)] = counter
 
 def second_filter(y):
     init_pos = y.find("Organism:")
@@ -30,3 +37,6 @@ data = re.split("\n(\d+)\. ",new_file)
 for n in data:
     if re.match("\D",n):
         first_filter(n)
+
+for w in dic_chip.items():
+    print  w
