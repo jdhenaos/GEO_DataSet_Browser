@@ -19,7 +19,11 @@ def second_filter(y):
         chip_counter(y)
 
 def first_filter(x):
-    if x.find("Parkinson") != -1:
+    if x.find("multiple sclerosis") != -1:
+        second_filter(x)
+    elif x.find("Multiple sclerosis") != -1:
+        second_filter(x)
+    elif x.find("Multiple Sclerosis") != -1:
         second_filter(x)
 
 try:
@@ -32,12 +36,12 @@ except:
     print "The file do not exist"
 
 try:
-    outfile = open("Parkinson_Chips.txt","w")
+    outfile = open("MultipleSclerosis_Chips.txt","w")
 except:
     print "File is not created"
 
 try:
-    outfile2 = open("Parkinson_Studies.txt","w")
+    outfile2 = open("MultipleSclerosis_Studies.txt","w")
 except:
     print "File is not created"
 
