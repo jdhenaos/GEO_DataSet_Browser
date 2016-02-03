@@ -6,7 +6,8 @@ new_file = ""
 def second_filter(y):
     init_pos = y.find("Organism:")
     final_pos = y.find(":",init_pos+9)
-    print y[init_pos:final_pos]
+    if y[init_pos:final_pos].find(";") == -1:
+        print y
 
 def first_filter(x):
     if x.find("Parkinson") != -1:
