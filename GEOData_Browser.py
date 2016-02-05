@@ -4,19 +4,19 @@ import re
 new_file = ""
 dic_chip = {}
 
-#def chip_counter(z):
-#    outfile2.writelines(z+"\n")
-#    t = re.search("(GPL)\d*",z)
-#    if dic_chip.has_key(t.group(0)):
-#        dic_chip[t.group(0)] += 1
-#    else:
-#        dic_chip[t.group(0)] = 1
+def chip_counter(z):
+    outfile2.writelines(z+"\n")
+    t = re.search("(GPL)\d*",z)
+    if dic_chip.has_key(t.group(0)):
+        dic_chip[t.group(0)] += 1
+    else:
+        dic_chip[t.group(0)] = 1
 
 def third_filter(w):
     init_pos = w.find("ftp://ftp.ncbi.nlm.nih.gov/geo/series/")
     final_pos = w.find("GSE",init_pos+1)
     if w[init_pos:final_pos] != "":
-        print w[init_pos:final_pos]
+        chip_counter(w)
 
 def second_filter(y):
     init_pos = y.find("Organism:")
