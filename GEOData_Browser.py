@@ -13,7 +13,10 @@ dic_chip = {}
 #        dic_chip[t.group(0)] = 1
 
 def third_filter(w):
-    
+    init_pos = w.find("ftp://ftp.ncbi.nlm.nih.gov/geo/series/")
+    final_pos = w.find("GSE",init_pos+1)
+    if w[init_pos:final_pos] != "":
+        print w[init_pos:final_pos]
 
 def second_filter(y):
     init_pos = y.find("Organism:")
