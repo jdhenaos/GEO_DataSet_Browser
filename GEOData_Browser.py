@@ -47,6 +47,7 @@ data = re.split("\n(\d+)\. ",new_file)
 for n in data:
     if re.match("\D",n):
         if first_filter(n) != None:
+            outfile2.writelines(first_filter(n)+"\n")
             res_std.append(first_filter(n))
             t = re.search("(GPL)\d*",first_filter(n))
             if dic_chip.has_key(t.group(0)):
@@ -55,17 +56,17 @@ for n in data:
                 dic_chip[t.group(0)] = 1
 
 for w in dic_chip.items():
-    o1 = str(w[0])
-    o2 = str(w[1])
-    out = o1+": "+o2+"\n"
-    #outfile.write(out)
     if w[1] > res:
         res = w[1]
         ar_res = [w[0],w[1]]
 
 for q in res_std:
     if q.find(ar_res[0]) != -1:
-        print q
+        init_pos = q.find("Accession:")
+        final_pos = q.find("ID:",init_pos+1)
+        if q[init_pos:final_pos] != "":
+            outfile.writelines(q[init_pos+11:final_pos]+"\n")
+            outfile2.writelines(q+"\n")
 
 
 infile.close()
