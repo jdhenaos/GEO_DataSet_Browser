@@ -20,7 +20,7 @@ def second_filter(y):
         return third_filter(y)
 
 def first_filter(x):
-    if x.find("Parkinson") != -1:# or x.find("Multiple Sclerosis") != -1 or x.find("multiple sclerosis") != -1:
+    if x.find("Multiple sclerosis") != -1 or x.find("Multiple Sclerosis") != -1 or x.find("multiple sclerosis") != -1:
         return second_filter(x)
 
 try:
