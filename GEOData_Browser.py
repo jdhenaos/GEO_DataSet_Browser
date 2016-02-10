@@ -5,6 +5,7 @@ new_file = ""
 dic_chip = {}
 res = 0
 ar_res= []
+res_std = []
 
 def third_filter(w):
     init_pos = w.find("ftp://ftp.ncbi.nlm.nih.gov/geo/series/")
@@ -46,6 +47,7 @@ data = re.split("\n(\d+)\. ",new_file)
 for n in data:
     if re.match("\D",n):
         if first_filter(n) != None:
+            res_std.append(first_filter(n))
             t = re.search("(GPL)\d*",first_filter(n))
             if dic_chip.has_key(t.group(0)):
                 dic_chip[t.group(0)] += 1
@@ -58,10 +60,12 @@ for w in dic_chip.items():
     out = o1+": "+o2+"\n"
     #outfile.write(out)
     if w[1] > res:
+        res = w[1]
         ar_res = [w[0],w[1]]
-    print w
 
-print ar_res
+for q in res_std:
+    if q.find(ar_res[0]) != -1:
+        print q
 
 
 infile.close()
