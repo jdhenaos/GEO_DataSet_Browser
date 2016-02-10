@@ -4,13 +4,19 @@ import re
 new_file = ""
 dic_chip = {}
 
+def chip_filter(a,b):
+    print a
+    print b
+
 def chip_counter(z):
-    outfile2.writelines(z+"\n")
+    #outfile2.writelines(z+"\n")
     t = re.search("(GPL)\d*",z)
     if dic_chip.has_key(t.group(0)):
         dic_chip[t.group(0)] += 1
     else:
         dic_chip[t.group(0)] = 1
+
+    chip_filter(z,dic_chip)
 
 def third_filter(w):
     init_pos = w.find("ftp://ftp.ncbi.nlm.nih.gov/geo/series/")
@@ -25,7 +31,7 @@ def second_filter(y):
         third_filter(y)
 
 def first_filter(x):
-    if x.find("Multiple sclerosis") != -1 or x.find("Multiple Sclerosis") != -1 or x.find("multiple sclerosis") != -1:
+    if x.find("Parkinson") != -1:# or x.find("Multiple Sclerosis") != -1 or x.find("multiple sclerosis") != -1:
         second_filter(x)
 
 try:
@@ -57,7 +63,8 @@ for w in dic_chip.items():
     o1 = str(w[0])
     o2 = str(w[1])
     out = o1+": "+o2+"\n"
-    outfile.write(out)
+    #outfile.write(out)
+
 
 infile.close()
 outfile.close()
