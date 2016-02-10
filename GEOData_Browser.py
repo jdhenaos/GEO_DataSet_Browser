@@ -47,7 +47,6 @@ data = re.split("\n(\d+)\. ",new_file)
 for n in data:
     if re.match("\D",n):
         if first_filter(n) != None:
-            outfile2.writelines(first_filter(n)+"\n")
             res_std.append(first_filter(n))
             t = re.search("(GPL)\d*",first_filter(n))
             if dic_chip.has_key(t.group(0)):
